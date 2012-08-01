@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>SomaFM Player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<!-- Main JS and CSS -->
+<script type="text/javascript" src="js/popup.js" ></script>
+<link href="popup.css" type="text/css" rel="stylesheet"></link>
+
+<!-- JQuery and JPlayer -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+
+<!-- Slider bar JS and CSS -->
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="smoothness/jquery-ui-1.8.13.custom.css"></link>
+
+
+<script type="text/javascript">
+//<![CDATA[
+//initialize the volume slider
+
+$(function() {
+		$( "#volume_slider" ).slider({
+			range: "min",
+			value: 50,
+			min: 1,
+			max: 100,
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.value );
+				var vol = ui.value/100;
+				$("#jquery_jplayer_1").jPlayer("volume", vol);
+			}
+		});
+		$( "#amount" ).val( "$" + $( "#volume_slider" ).slider( "value" ) );
+	});
+
+
+$(document).ready(function(){
+
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function () {
+			/*
+			$(this).jPlayer("setMedia", {
+				mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3"
+			});
+			$(this).jPlayer("play");
+			*/
+			init_player();
+		},
+		swfPath: "js",
+		supplied: "mp3"
+	});
+});
+//]]>
+</script>
+</head>
+<body>
+
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="wrapper">
+	<!-- logo, and controls -->
+	<div id="header">
+		
+		<img id="logo" class="sprite" src="assets/transparent.gif" />
+		
+		
+		<div id="controls">
+			
+			<div id="play_button" class="sprite play_grey"></div>		
+			
+			<div id="pause_button" class="sprite pause_grey"></div>
+			
+			<div id="volume">
+				<div id="mute_button" class="sprite unmute"></div>
+				<div id="volume_slider"></div>
+			</div>
+			
+		</div>	
+		
+		
+	</div>
+	
+	<!-- the station art, and "now playing" info -->
+	<div id="body">
+		<img id="station_art" src="assets/loading.png" />
+		
+		<div id="information">
+			<div id="station_name_div">	Now playing on <span id="station_name"></span>:</div>
+			<div class="info_area">Song:<span id="song_title" class="info_string"></span></div>			
+			<div class="info_area">Artist:<span id="song_artist" class="info_string"></span></div>			
+			<div class="info_area">Album:<span id="song_album" class="info_string"></span></div>
+		</div>
+		
+	</div>
+	
+	<!-- Holds our stations and history buttons -->
+	<div id="footer">
+		<input id="show_stations" type="button" value="Show Stations"></input>
+		<input id="show_history" type="button" value="Show History"></input>
+	</div>
+
+</div>
+</body>
+
+</html>

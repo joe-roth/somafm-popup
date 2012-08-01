@@ -1,11 +1,11 @@
 SomaFM Popup Player
 ===================
 
-Over 20 unique channels of listener-supported, commercial-free, underground/alternative radio broadcasting from San Francisco. All music hand-picked by SomaFM's award-winning DJs and music directors.
+This is the HTML5 popup music player for [Somafm.com](http://www.somafm.com), based on the [JPlayer project](https://github.com/happyworm/jPlayer/).  SomaFM is over 20 unique channels of listener-supported, commercial-free, underground/alternative radio broadcasting from San Francisco. All music hand-picked by SomaFM's award-winning DJs and music directors.
 
-Developers
+Development Notes
 ----------
-This player uses AJAX to communicate with the Somafm backend.  When developing locally, I recommend setting up a reverse proxy.  To do this with Apache, you can do the following....
+This player uses AJAX to communicate with the Somafm servers.  When developing locally, I recommend setting up a reverse proxy.  To do this with Apache, you can do the following....
 
 1.  Enable mod_proxy_http
 ```

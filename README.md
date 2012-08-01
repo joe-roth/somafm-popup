@@ -19,7 +19,6 @@ $ sudo a2enmod proxy_http
     Deny from all
     Allow from localhost
 </Proxy>
-
 ProxyPass /soma_proxy http://somafm.com connectiontimeout=5 timeout=5
 ProxyPassReverse /soma_proxy http://somafm.com
 ```
